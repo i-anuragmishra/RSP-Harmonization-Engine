@@ -1,20 +1,83 @@
 # RSP Harmonization Engine
 
-A tool for analyzing and harmonizing Responsible Scaling Policies (RSPs) across major AI labs. Extracts structured data from RSP documents, identifies gaps and inconsistencies, and generates harmonization recommendations for regulators.
+**Track 3 Submission - AI Safety Hackathon**
 
-## Overview
+> A tool for analyzing and harmonizing Responsible Scaling Policies (RSPs) across major AI labs. Extracts structured data, identifies gaps and inconsistencies, and generates harmonization recommendations for regulators.
 
-Major AI labs have published Responsible Scaling Policies using different terminology and frameworks:
-- **Anthropic**: ASL levels (ASL-1 through ASL-4)
-- **OpenAI**: Risk levels (Low, Medium, High, Critical)
-- **Google DeepMind**: CCL levels (Below CCL, CCL-1, CCL-2)
-- **Meta**: Tier system (Tier 1 through Tier 4)
+---
 
-This tool analyzes these frameworks to:
-1. **Extract** structured data from RSP documents
-2. **Map** equivalent terminology across frameworks
-3. **Identify** gaps and inconsistencies
-4. **Generate** harmonization recommendations for regulators
+## Team Information
+
+| | |
+|---|---|
+| **Team Name** | Anurag |
+| **Team Member** | Anurag Mishra |
+| **Affiliation** | Independent |
+| **Track** | Track 3 - RSP Harmonization |
+
+---
+
+## Problem Statement
+
+Major AI labs have published Responsible Scaling Policies using incompatible terminology:
+
+| Lab | Framework | Risk Levels |
+|-----|-----------|-------------|
+| Anthropic | RSP v2.2 | ASL-1, ASL-2, ASL-3, ASL-4 |
+| OpenAI | Preparedness Framework v2.0 | Low, Medium, High, Critical |
+| Google DeepMind | Frontier Safety Framework v3.0 | Below CCL, CCL-1, CCL-2 |
+| Meta | Frontier AI Framework v1.0 | Tier 1, Tier 2, Tier 3, Tier 4 |
+
+This inconsistency makes it difficult for regulators to create unified AI safety policy.
+
+---
+
+## Solution
+
+The RSP Harmonization Engine:
+
+1. **Extracts** structured data from 4 major lab RSP documents
+2. **Maps** equivalent terminology across ASL/CCL/Tier frameworks
+3. **Identifies** 11 gaps and inconsistencies (5 high severity)
+4. **Generates** 7 harmonization recommendations for regulators
+5. **Provides** interactive dashboard and exportable reports
+
+---
+
+## Key Results
+
+### Gap Analysis
+- **11 total gaps** identified across frameworks
+- **5 high severity** issues requiring immediate attention
+- Key problems: autonomy definitions, CBRN baselines, pause commitments
+
+### Top Gaps Found
+| Gap ID | Issue | Severity |
+|--------|-------|----------|
+| THR-AUT-001 | Autonomy Threshold Misalignment | HIGH |
+| THR-CBR-001 | CBRN Uplift Definition Inconsistency | HIGH |
+| TERM-001 | Risk Level Naming Inconsistency | HIGH |
+| DEF-PAU-001 | Pause Commitment Ambiguity | HIGH |
+| THR-RND-001 | AI R&D Acceleration Threshold Divergence | HIGH |
+
+### Harmonization Recommendations
+| ID | Recommendation | Priority |
+|----|----------------|----------|
+| HARM-001 | Unified 5-Tier Risk Level Framework | HIGH |
+| HARM-002 | Standardized Autonomy Capability Taxonomy (A1-A6) | HIGH |
+| HARM-003 | CBRN Uplift Measurement Standard | HIGH |
+| HARM-005 | AI Development Pause Protocol | HIGH |
+
+### Terminology Mapping
+| Unified Level | Anthropic | OpenAI | DeepMind | Meta |
+|---------------|-----------|--------|----------|------|
+| Minimal | ASL-1 | Low | - | Tier 1 |
+| Emerging | ASL-2 | Medium | Below CCL | Tier 2 |
+| Significant | ASL-3 | High | CCL-1 | Tier 3 |
+| Severe | ASL-4 | - | CCL-2 | - |
+| Critical | - | Critical | - | Tier 4 |
+
+---
 
 ## Quick Start
 
@@ -32,89 +95,76 @@ python main.py dashboard
 python create_submission.py
 ```
 
+---
+
+## Project Structure
+
+```
+RSP-Harmonization-Engine/
+├── main.py                    # Main entry point
+├── create_submission.py       # Generate export package
+├── requirements.txt           # Python dependencies
+├── config/                    # Configuration
+├── src/
+│   ├── extraction/            # PDF parsing, LLM extraction
+│   ├── comparison/            # Terminology mapping, gap analysis
+│   └── harmonization/         # Recommendation generation
+├── visualization/
+│   └── dashboard.py           # Streamlit dashboard
+├── outputs/                   # Generated reports
+└── submission/                # Complete export package
+    ├── SUMMARY.md
+    ├── data/                  # JSON, CSV data files
+    ├── visualizations/        # Charts (HTML + PNG)
+    └── reports/               # Formatted documents
+```
+
+---
+
 ## Features
 
-### Terminology Mapping
-Maps equivalent risk levels across all frameworks to a unified 5-tier system:
+### 1. Terminology Mapping
+Maps equivalent risk levels across all frameworks to a unified 5-tier system.
 
-| Unified Level | Anthropic | OpenAI | DeepMind | Meta |
-|---------------|-----------|--------|----------|------|
-| Minimal | ASL-1 | Low | - | Tier 1 |
-| Emerging | ASL-2 | Medium | Below CCL | Tier 2 |
-| Significant | ASL-3 | High | CCL-1 | Tier 3 |
-| Severe | ASL-4 | - | CCL-2 | - |
-| Critical | - | Critical | - | Tier 4 |
+### 2. Gap Analysis
+Identifies inconsistencies:
+- **Threshold gaps** - Different bars for same capability
+- **Coverage gaps** - Missing risk domains
+- **Definition gaps** - Same terms, different meanings
+- **Terminology gaps** - Incompatible naming
 
-### Gap Analysis
-Identifies inconsistencies across frameworks:
-- **Threshold gaps**: Different bars for the same capability
-- **Coverage gaps**: Some labs don't address certain risk domains
-- **Definition gaps**: Same terms with different meanings
-- **Terminology gaps**: Different naming conventions
-
-### Harmonization Recommendations
-Generates unified language suitable for:
+### 3. Harmonization Recommendations
+Generates unified language for:
 - EU AI Act Code of Practice
 - UK AI Safety Institute
 - US AI Safety Institute
 - International standards bodies
 
-## Commands
+### 4. Interactive Dashboard
+Streamlit-based exploration with:
+- Framework overview
+- Level mapping visualization
+- Domain coverage heatmap
+- Gap analysis explorer
+- Recommendation viewer
 
-| Command | Description |
-|---------|-------------|
-| `python main.py demo` | Run demo with prebuilt data |
-| `python main.py analyze` | Run gap analysis |
-| `python main.py harmonize` | Generate recommendations |
-| `python main.py dashboard` | Launch Streamlit dashboard |
-| `python main.py all` | Run full pipeline |
-| `python create_submission.py` | Generate complete export package |
-
-## Project Structure
-
-```
-rsp-harmonization-engine/
-├── main.py                    # Main entry point
-├── create_submission.py       # Generate export package
-├── requirements.txt           # Python dependencies
-├── config/
-│   └── settings.py            # Configuration management
-├── src/
-│   ├── extraction/            # PDF parsing and LLM extraction
-│   ├── comparison/            # Terminology mapping and gap analysis
-│   └── harmonization/         # Recommendation generation
-├── visualization/
-│   ├── dashboard.py           # Streamlit dashboard
-│   └── components/            # Dashboard components
-├── data/
-│   └── schemas/               # JSON schemas
-├── outputs/
-│   ├── reports/               # Generated reports
-│   └── harmonized_language/   # Recommendations
-└── submission/                # Complete export package
-```
-
-## Key Results
-
-### Gap Analysis Summary
-- **11 gaps identified** across 4 major frameworks
-- **5 high-severity gaps** requiring immediate attention
-- Key issues: autonomy definitions, CBRN uplift baselines, pause commitments
-
-### Top Recommendations
-1. **Unified Risk Level Framework (UARLF)** - 5-tier standardized system
-2. **Autonomy Capability Taxonomy** - 6-dimension breakdown (A1-A6)
-3. **CBRN Uplift Assessment Framework** - Standardized baseline and metrics
-4. **AI Development Pause Protocol** - Clear triggers and procedures
+---
 
 ## Output Files
 
-After running `python create_submission.py`:
+The `/submission/` folder contains:
 
-- `submission/SUMMARY.md` - Complete analysis summary
-- `submission/data/` - JSON and CSV data files
-- `submission/visualizations/` - Charts (HTML + PNG)
-- `submission/reports/` - Formatted recommendation documents
+| File | Description |
+|------|-------------|
+| `SUMMARY.md` | Complete analysis summary |
+| `data/all_extractions.json` | Structured data from all labs |
+| `data/gap_analysis.json` | All identified gaps |
+| `data/recommendations.json` | Harmonization recommendations |
+| `visualizations/*.png` | Charts and diagrams |
+| `reports/executive_brief.md` | Executive summary |
+| `reports/eu_code_of_practice.md` | EU-formatted recommendations |
+
+---
 
 ## Tech Stack
 
@@ -126,15 +176,59 @@ After running `python create_submission.py`:
 - **Plotly** - Visualizations
 - **Pandas** - Data manipulation
 
-## Configuration
+---
 
-Copy `.env.example` to `.env` and configure:
+## Target Audience
 
-```bash
-# Required for PDF extraction (optional - prebuilt data works without)
-ANTHROPIC_API_KEY=your_key_here
+This tool is designed for:
+- **EU AI Office** - AI Act Code of Practice development
+- **UK AISI** - Frontier AI safety evaluation
+- **US AISI** - National AI safety standards
+- **ISO/IEC** - International AI standards
+- **Frontier Model Forum** - Industry coordination
+
+---
+
+## Demo
+
+### Terminal Output
 ```
+╭──────────────────────────────────────────────────────────────────╮
+│ RSP Harmonization Engine - Demo                                  │
+╰──────────────────────────────────────────────────────────────────╯
+
+1. Extracted Data Summary
+  ✓ Anthropic: RSP v2.2 (4 levels)
+  ✓ OpenAI: Preparedness Framework v2.0 (4 levels)
+  ✓ DeepMind: Frontier Safety Framework v3.0 (4 levels)
+  ✓ Meta: Frontier AI Framework v1.0 (4 levels)
+
+2. Gap Analysis
+  Total: 11 gaps (5 high severity)
+
+3. Harmonization Recommendations
+  Total: 7 recommendations
+```
+
+### Dashboard
+Launch with `python main.py dashboard` and access at `http://localhost:8501`
+
+---
 
 ## License
 
 MIT License
+
+---
+
+## Acknowledgments
+
+- RSP documents from Anthropic, OpenAI, Google DeepMind, and Meta
+- METR's "Common Elements of Frontier AI Safety Policies" analysis
+- Frontier Model Forum framework comparisons
+
+---
+
+**Built for AI Safety Hackathon - Track 3: RSP Harmonization**
+
+*Team Anurag | Anurag Mishra | Independent*
