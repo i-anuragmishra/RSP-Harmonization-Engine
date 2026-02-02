@@ -1,0 +1,284 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://rsp-harmonization.dev/schemas/rsp_schema.json",
+  "title": "RSP Extraction Schema",
+  "description": "Schema for structured extraction of Responsible Scaling Policy documents",
+  "type": "object",
+  "required": [
+    "lab_info",
+    "capability_thresholds",
+    "risk_domains"
+  ],
+  "properties": {
+    "lab_info": {
+      "type": "object",
+      "description": "Information about the AI lab and their RSP document",
+      "required": [
+        "name",
+        "document_name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the AI lab (e.g., Anthropic, OpenAI, DeepMind)"
+        },
+        "document_name": {
+          "type": "string",
+          "description": "Official name of the RSP document"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version number of the document (e.g., '2.2', 'v3')"
+        },
+        "publication_date": {
+          "type": "string",
+          "description": "Publication date (e.g., 'October 2024')"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the official document"
+        }
+      }
+    },
+    "capability_thresholds": {
+      "type": "array",
+      "description": "Risk/capability levels defined in the framework",
+      "items": {
+        "type": "object",
+        "required": [
+          "level_name",
+          "level_id"
+        ],
+        "properties": {
+          "level_name": {
+            "type": "string",
+            "description": "Human-readable name (e.g., 'ASL-3', 'High', 'CCL-1')"
+          },
+          "level_id": {
+            "type": "string",
+            "description": "Standardized identifier for the level"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of what this level represents"
+          },
+          "triggers": {
+            "type": "array",
+            "description": "Capabilities or conditions that trigger this level",
+            "items": {
+              "type": "object",
+              "properties": {
+                "domain": {
+                  "type": "string",
+                  "description": "Risk domain (e.g., 'CBRN', 'cyber', 'autonomy')"
+                },
+                "capability": {
+                  "type": "string",
+                  "description": "Specific capability description"
+                },
+                "threshold": {
+                  "type": "string",
+                  "description": "Threshold definition"
+                }
+              }
+            }
+          },
+          "required_safeguards": {
+            "type": "array",
+            "description": "Safeguards required at this level",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "risk_domains": {
+      "type": "array",
+      "description": "Risk domains covered by the framework",
+      "items": {
+        "type": "object",
+        "required": [
+          "domain"
+        ],
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Risk domain name",
+            "enum": [
+              "cbrn",
+              "cyber",
+              "autonomy",
+              "persuasion",
+              "model_autonomy",
+              "ai_rd",
+              "deception",
+              "biosecurity",
+              "chemical",
+              "radiological",
+              "nuclear",
+              "other"
+            ]
+          },
+          "coverage": {
+            "type": "string",
+            "enum": [
+              "full",
+              "partial",
+              "none"
+            ],
+            "description": "Level of coverage for this domain"
+          },
+          "thresholds": {
+            "type": "array",
+            "description": "Specific thresholds defined for this domain",
+            "items": {
+              "type": "object",
+              "properties": {
+                "level": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "metrics": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "safeguards": {
+      "type": "array",
+      "description": "Safeguard categories and requirements",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Safeguard type",
+            "enum": [
+              "deployment",
+              "security",
+              "operational",
+              "governance",
+              "technical",
+              "procedural"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Safeguard name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description"
+          },
+          "applicable_levels": {
+            "type": "array",
+            "description": "Risk levels where this safeguard applies",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requirements": {
+            "type": "array",
+            "description": "Specific requirements",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "evaluation_requirements": {
+      "type": "array",
+      "description": "Evaluation and testing requirements",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Evaluation name"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "internal",
+              "external",
+              "red_team",
+              "benchmark",
+              "audit"
+            ]
+          },
+          "frequency": {
+            "type": "string",
+            "description": "How often evaluation is required"
+          },
+          "description": {
+            "type": "string"
+          },
+          "applicable_levels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "commitments": {
+      "type": "array",
+      "description": "Key commitments made in the framework",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "pause",
+              "disclosure",
+              "cooperation",
+              "assessment",
+              "other"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "conditions": {
+            "type": "array",
+            "description": "Conditions that trigger this commitment",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Extraction metadata",
+      "properties": {
+        "extraction_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "extraction_model": {
+          "type": "string"
+        },
+        "confidence_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

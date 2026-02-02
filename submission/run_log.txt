@@ -1,0 +1,89 @@
+╭──────────────────────────────────────────────────────────────────────────────╮
+│ RSP Harmonization Engine - Demo                                              │
+╰─────────────────── Comparing Responsible Scaling Policies ───────────────────╯
+
+1. Extracted Data Summary
+
+  ✓ Anthropic: Responsible Scaling Policy v2.2 (4 levels defined)
+  ✓ OpenAI: Preparedness Framework v2.0 (4 levels defined)
+  ✓ Google DeepMind: Frontier Safety Framework v3.0 (4 levels defined)
+  ✓ Meta: Frontier AI Framework v1.0 (4 levels defined)
+
+2. Terminology Mapping
+
+                         Risk Level Terminology Mapping                         
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ Unified     ┃            ┃           ┃            ┃             ┃            ┃
+┃ Level       ┃ Descripti… ┃ Anthropic ┃ Openai     ┃ Deepmind    ┃ Meta       ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ Minimal     │ Systems    │ ASL-1 ✓   │ Low ~      │ -           │ Tier 1 -   │
+│             │ posing no  │           │            │             │ Low Risk ~ │
+│             │ meaningful │           │            │             │            │
+│             │ increment… │           │            │             │            │
+│             │ risk       │           │            │             │            │
+│             │ beyo...    │           │            │             │            │
+│ Emerging    │ Early      │ ASL-2 ✓   │ Medium ~   │ Below CCL ~ │ Tier 2 -   │
+│             │ signs of   │           │            │             │ Moderate   │
+│             │ dangerous  │           │            │             │ Risk ~     │
+│             │ capabilit… │           │            │             │            │
+│             │ but no     │           │            │             │            │
+│             │ sign...    │           │            │             │            │
+│ Significant │ Substanti… │ ASL-3 ✓   │ High ✓     │ CCL-1 ✓     │ Tier 3 -   │
+│             │ increases  │           │            │             │ High Risk  │
+│             │ risk of    │           │            │             │ ✓          │
+│             │ catastrop… │           │            │             │            │
+│             │ misus...   │           │            │             │            │
+│ Severe      │ High-risk  │ ASL-4 ✓   │ -          │ CCL-2 ✓     │ -          │
+│             │ capabilit… │           │            │             │            │
+│             │ requiring  │           │            │             │            │
+│             │ maximum    │           │            │             │            │
+│             │ safeguard… │           │            │             │            │
+│ Critical    │ Capabilit… │ -         │ Critical ✓ │ -           │ Tier 4 -   │
+│             │ that could │           │            │             │ Critical   │
+│             │ contribute │           │            │             │ Risk ✓     │
+│             │ to         │           │            │             │            │
+│             │ existenti… │           │            │             │            │
+│             │ ...        │           │            │             │            │
+└─────────────┴────────────┴───────────┴────────────┴─────────────┴────────────┘
+
+3. Key Gaps Identified
+
+  ■ THR-AUT-001: Autonomy Threshold Misalignment
+    Labs define 'dangerous autonomy' differently. Anthropic focuses on 
+self-replication and resource acq...
+  ■ THR-RND-001: AI R&D Acceleration Threshold Divergence
+    Different labs have vastly different thresholds for when AI-assisted R&D 
+becomes concerning. Some tr...
+  ■ THR-CBR-001: CBRN Uplift Definition Inconsistency
+    'Meaningful uplift' for CBRN capabilities is defined differently. Some labs 
+compare to 'web search b...
+
+  Total: 11 gaps (5 high severity)
+
+4. Harmonization Recommendations
+
+  ● Unified Risk Level Framework
+    → EU AI Office, UK AISI...
+  ● Standardized Autonomy Capability Definition
+    → EU AI Office, UK AISI...
+  ● CBRN Uplift Measurement Standard
+    → EU AI Office, UK AISI...
+
+  Total: 7 recommendations
+
+5. Exporting Results
+
+  ✓ Saved extracted data
+Exported 11 gaps to 
+/lambda/nfs/apart-1/RSP_Harmonization_Engine/outputs/reports/gap_analysis.json
+  ✓ Saved gap analysis
+Exported recommendations JSON to 
+/lambda/nfs/apart-1/RSP_Harmonization_Engine/outputs/harmonized_language/recomme
+ndations.json
+Exported recommendations to 
+/lambda/nfs/apart-1/RSP_Harmonization_Engine/outputs/harmonized_language/recomme
+ndations.md
+  ✓ Saved harmonization recommendations
+
+Demo complete!
+Run 'python main.py dashboard' to explore interactively

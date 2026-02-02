@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "generated_date": "2026-02-02T01:46:34.103480",
+    "total_recommendations": 7
+  },
+  "recommendations": [
+    {
+      "recommendation_id": "HARM-001",
+      "topic": "Unified Risk Level Framework",
+      "category": "terminology",
+      "priority": "high",
+      "confidence": "high",
+      "current_state": "Labs use ASL (1-4), CCL (1-2), Tiers (1-4), and Low/Medium/High/Critical with different semantics.",
+      "proposed_language": "Unified AI Risk Level Framework (UARLF):\n- Level 1 MINIMAL: No meaningful incremental risk beyond widely available tools\n- Level 2 EMERGING: Early signs of dangerous capabilities, no significant uplift\n- Level 3 SIGNIFICANT: Substantially increases catastrophic misuse risk, requires mitigations\n- Level 4 SEVERE: Could accelerate state-level threats, requires maximum safeguards\n- Level 5 CRITICAL: Could contribute to existential risks, may require development pause",
+      "rationale": "A unified 5-tier framework provides clearer mapping across existing frameworks while adding granularity for dangerous systems.",
+      "applicable_to": [
+        "EU AI Office",
+        "UK AISI",
+        "US AISI",
+        "AI Labs",
+        "ISO Standards Bodies"
+      ],
+      "implementation_notes": "Labs should publish mapping tables. Transition period of 12 months recommended."
+    },
+    {
+      "recommendation_id": "HARM-002",
+      "topic": "Standardized Autonomy Capability Definition",
+      "category": "threshold",
+      "priority": "high",
+      "confidence": "medium",
+      "current_state": "Autonomy means different things: self-replication (Anthropic), task completion (OpenAI), ML R&D (DeepMind).",
+      "proposed_language": "Autonomy Capability Taxonomy:\n- A1 TASK AUTONOMY: Complete well-defined tasks without human oversight\n- A2 RESOURCE AUTONOMY: Acquire resources independently\n- A3 SELF-PRESERVATION: Take actions to ensure continued operation\n- A4 SELF-REPLICATION: Create functional copies or spawn instances\n- A5 RECURSIVE IMPROVEMENT: Meaningfully improve own capabilities\n- A6 AI R&D ACCELERATION: Substantially accelerate AI development",
+      "rationale": "Breaking down autonomy into specific sub-capabilities allows for more precise thresholds.",
+      "applicable_to": [
+        "EU AI Office",
+        "UK AISI",
+        "US AISI",
+        "AI Labs",
+        "Academic Researchers"
+      ],
+      "implementation_notes": "Each autonomy dimension should have separate thresholds."
+    },
+    {
+      "recommendation_id": "HARM-003",
+      "topic": "CBRN Uplift Measurement Standard",
+      "category": "threshold",
+      "priority": "high",
+      "confidence": "medium",
+      "current_state": "Labs compare CBRN uplift to different baselines: web search, skilled search, non-expert baseline.",
+      "proposed_language": "CBRN Uplift Assessment Framework:\nBaseline: Knowledge available to motivated non-expert using internet with 40 hours effort.\n- U0 No Uplift: No information beyond baseline\n- U1 Marginal: <25% time reduction vs baseline\n- U2 Moderate: 25-50% time reduction OR synthesis not easily found\n- U3 Significant: >50% time reduction OR actionable operational details\n- U4 Substantial: Expert-level guidance OR novel pathways\n- U5 Critical: Could enable novel agents OR lower barriers for state actors",
+      "rationale": "A standardized uplift scale with defined baseline enables consistent assessment across labs.",
+      "applicable_to": [
+        "EU AI Office",
+        "UK AISI",
+        "US AISI",
+        "AI Labs",
+        "Biosecurity Experts"
+      ],
+      "implementation_notes": "Requires development of standardized evaluation protocols."
+    },
+    {
+      "recommendation_id": "HARM-004",
+      "topic": "Security Level Standardization",
+      "category": "safeguard",
+      "priority": "medium",
+      "confidence": "high",
+      "current_state": "Security requirements vary: hardened infrastructure, Security Level Alpha/Omega, weight security.",
+      "proposed_language": "AI Security Level Framework (ASLF):\n- ASLF-1 Standard: Industry-standard access controls, regular audits\n- ASLF-2 Enhanced: MFA, encrypted weights, air-gapped training, background checks\n- ASLF-3 Maximum: HSMs, isolated compute, continuous monitoring, supply chain security\n- ASLF-4 Sovereign: ASLF-3 plus government oversight, classified-level physical security",
+      "rationale": "Clear security tiers enable regulators to set requirements and labs to demonstrate compliance.",
+      "applicable_to": [
+        "EU AI Office",
+        "UK AISI",
+        "US AISI",
+        "AI Labs"
+      ],
+      "implementation_notes": "Labs should undergo third-party security audits for certification."
+    },
+    {
+      "recommendation_id": "HARM-005",
+      "topic": "Pause Commitment Protocol",
+      "category": "process",
+      "priority": "high",
+      "confidence": "medium",
+      "current_state": "All labs commit to pausing under extreme circumstances, but conditions are vague.",
+      "proposed_language": "AI Development Pause Protocol (ADPP):\nTriggers: Level 4+ risk without safeguards, unexpected capability emergence, deceptive behaviors, government directive.\nProcedure:\n- IMMEDIATE (1 hour): Halt training, disable API access\n- SHORT-TERM (24 hours): Notify governance board, regulators\n- ASSESSMENT (7 days): Complete capability assessment\n- DECISION (30 days): Resume with safeguards, restrict scope, extend pause, or discontinue\nTransparency: Public disclosure within 7 days, detailed report to regulators within 30 days.",
+      "rationale": "Clear, verifiable pause conditions with defined timelines enable external oversight.",
+      "applicable_to": [
+        "EU AI Office",
+        "UK AISI",
+        "US AISI",
+        "AI Labs",
+        "Frontier Model Forum"
+      ],
+      "implementation_notes": "Labs should pre-designate governance contacts. Annual pause drills recommended."
+    },
+    {
+      "recommendation_id": "HARM-006",
+      "topic": "Evaluation Transparency Standard",
+      "category": "process",
+      "priority": "medium",
+      "confidence": "high",
+      "current_state": "Evaluation requirements vary in specificity and transparency across frameworks.",
+      "proposed_language": "AI Capability Evaluation Transparency Standard (ACETS):\nRequired Disclosures per release:\n1. Capability Scorecard across standardized benchmarks\n2. Risk Domain Assessment (CBRN, cyber, autonomy, persuasion)\n3. Red Team Summary (high-level findings)\n4. Uplift Assessment with methodology\n5. Autonomy Profile (A1-A6 dimensions)\nTimeline: Pre-deployment evaluation, public scorecard at deployment, quarterly monitoring, annual transparency report.",
+      "rationale": "Standardized evaluation reporting enables comparison across labs and supports evidence-based regulation.",
+      "applicable_to": [
+        "EU AI Office",
+        "UK AISI",
+        "US AISI",
+        "AI Labs",
+        "Academic Researchers"
+      ],
+      "implementation_notes": "Requires development of standardized benchmark suite."
+    },
+    {
+      "recommendation_id": "HARM-007",
+      "topic": "Terminology Glossary",
+      "category": "terminology",
+      "priority": "medium",
+      "confidence": "high",
+      "current_state": "Terms like safeguard, mitigation, control, dangerous capability used inconsistently.",
+      "proposed_language": "Unified RSP Terminology:\n- CAPABILITY: Measurable skill an AI system can perform\n- DANGEROUS CAPABILITY: Capability that could lead to significant harm if misused\n- SAFEGUARD: Proactive measure to prevent dangerous capabilities (prevents risk)\n- MITIGATION: Reactive measure to reduce impact of existing capabilities (reduces severity)\n- CONTROL: Mechanism limiting how capability can be used\n- THRESHOLD: Capability level triggering specific safeguard requirements\n- UPLIFT: Incremental benefit beyond defined baseline\n- PAUSE: Temporary halt pending safety concern resolution",
+      "rationale": "Consistent terminology reduces confusion and enables clearer communication.",
+      "applicable_to": [
+        "EU AI Office",
+        "UK AISI",
+        "US AISI",
+        "AI Labs",
+        "Media",
+        "General Public"
+      ],
+      "implementation_notes": "Should be incorporated into regulatory guidance and lab communications."
+    }
+  ]
+}

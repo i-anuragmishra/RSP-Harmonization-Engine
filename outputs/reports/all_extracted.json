@@ -1,0 +1,1014 @@
+{
+  "anthropic": {
+    "lab_info": {
+      "name": "Anthropic",
+      "document_name": "Responsible Scaling Policy",
+      "version": "2.2",
+      "publication_date": "October 2024",
+      "url": "https://www.anthropic.com/news/announcing-our-updated-responsible-scaling-policy"
+    },
+    "capability_thresholds": [
+      {
+        "level_name": "ASL-1",
+        "level_id": "asl_1",
+        "description": "Systems that pose no meaningful catastrophic risk, such as a 2018-era LLM or a chess-playing AI",
+        "triggers": [],
+        "required_safeguards": [
+          "Basic security practices"
+        ]
+      },
+      {
+        "level_name": "ASL-2",
+        "level_id": "asl_2",
+        "description": "Current AI systems including Claude - systems that show early signs of dangerous capabilities but cannot yet provide meaningful uplift beyond what's available online",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Provides information about CBRN weapons",
+            "threshold": "No meaningful uplift beyond web search"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Can assist with code/cyber tasks",
+            "threshold": "Below expert human level"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Limited autonomous operation",
+            "threshold": "Cannot meaningfully self-replicate or acquire resources"
+          }
+        ],
+        "required_safeguards": [
+          "Standard security measures",
+          "Basic access controls",
+          "Usage monitoring",
+          "Standard deployment safeguards"
+        ]
+      },
+      {
+        "level_name": "ASL-3",
+        "level_id": "asl_3",
+        "description": "Systems that substantially increase the risk of catastrophic misuse compared to a non-AI baseline, OR show low-level autonomous capabilities",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Meaningful uplift for CBRN attacks",
+            "threshold": "Provides significant assistance beyond existing resources to non-experts"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Autonomous cyber operations",
+            "threshold": "Can discover and exploit novel vulnerabilities"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Autonomous AI R&D",
+            "threshold": "Can meaningfully accelerate AI development"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Resource acquisition",
+            "threshold": "Can acquire resources or influence autonomously"
+          }
+        ],
+        "required_safeguards": [
+          "Enhanced security (hardened infrastructure)",
+          "Strict access controls",
+          "Red team evaluations before deployment",
+          "Deployment restrictions based on risk",
+          "Containment protocols for training",
+          "Monitoring for misuse",
+          "Incident response procedures"
+        ]
+      },
+      {
+        "level_name": "ASL-4",
+        "level_id": "asl_4",
+        "description": "Systems that could substantially accelerate state-level threats or provide capabilities that would be catastrophic if misused (even by states)",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Expert-level CBRN assistance",
+            "threshold": "Could enable novel attack vectors or substantially accelerate existing ones"
+          },
+          {
+            "domain": "cyber",
+            "capability": "State-level cyber capabilities",
+            "threshold": "Can conduct sophisticated, persistent cyber campaigns"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Significant autonomous operation",
+            "threshold": "Can operate and achieve complex goals with minimal human oversight"
+          }
+        ],
+        "required_safeguards": [
+          "Maximum security protocols",
+          "Extensive government cooperation",
+          "Mandatory external oversight",
+          "Severe deployment restrictions",
+          "Potential pause on development"
+        ]
+      }
+    ],
+    "risk_domains": [
+      {
+        "domain": "cbrn",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "ASL-2",
+            "description": "No meaningful uplift beyond web resources"
+          },
+          {
+            "level": "ASL-3",
+            "description": "Provides significant uplift to non-experts"
+          },
+          {
+            "level": "ASL-4",
+            "description": "Expert-level or novel capabilities"
+          }
+        ]
+      },
+      {
+        "domain": "cyber",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "ASL-2",
+            "description": "Below expert human level"
+          },
+          {
+            "level": "ASL-3",
+            "description": "Can discover and exploit vulnerabilities"
+          },
+          {
+            "level": "ASL-4",
+            "description": "State-level capabilities"
+          }
+        ]
+      },
+      {
+        "domain": "autonomy",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "ASL-2",
+            "description": "Cannot meaningfully self-replicate"
+          },
+          {
+            "level": "ASL-3",
+            "description": "Low-level autonomous capabilities"
+          },
+          {
+            "level": "ASL-4",
+            "description": "Significant autonomous operation"
+          }
+        ]
+      },
+      {
+        "domain": "ai_rd",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "ASL-3",
+            "description": "Can meaningfully accelerate AI development"
+          }
+        ]
+      },
+      {
+        "domain": "persuasion",
+        "coverage": "partial",
+        "thresholds": []
+      }
+    ],
+    "safeguards": [
+      {
+        "type": "security",
+        "name": "Hardened Infrastructure",
+        "description": "Enhanced security measures for model weights and training infrastructure",
+        "applicable_levels": [
+          "ASL-3",
+          "ASL-4"
+        ]
+      },
+      {
+        "type": "deployment",
+        "name": "Deployment Restrictions",
+        "description": "Risk-based access controls and usage limitations",
+        "applicable_levels": [
+          "ASL-3",
+          "ASL-4"
+        ]
+      },
+      {
+        "type": "operational",
+        "name": "Red Team Evaluations",
+        "description": "Pre-deployment testing for dangerous capabilities",
+        "applicable_levels": [
+          "ASL-3",
+          "ASL-4"
+        ]
+      },
+      {
+        "type": "governance",
+        "name": "External Oversight",
+        "description": "Third-party audits and government cooperation",
+        "applicable_levels": [
+          "ASL-4"
+        ]
+      }
+    ],
+    "evaluation_requirements": [
+      {
+        "name": "Capability Evaluations",
+        "type": "internal",
+        "frequency": "Before major deployments",
+        "description": "Test for dangerous capabilities across risk domains"
+      },
+      {
+        "name": "Red Team Testing",
+        "type": "red_team",
+        "frequency": "Ongoing",
+        "description": "Adversarial testing for misuse potential"
+      },
+      {
+        "name": "External Audits",
+        "type": "audit",
+        "frequency": "Annual",
+        "description": "Third-party review of safety measures"
+      }
+    ],
+    "commitments": [
+      {
+        "type": "pause",
+        "description": "Will not train or deploy models at a given ASL unless safeguards for that level are in place",
+        "conditions": [
+          "Safeguards not ready",
+          "Capability evaluation triggers threshold"
+        ]
+      },
+      {
+        "type": "assessment",
+        "description": "Regular capability evaluations to detect threshold crossings",
+        "conditions": [
+          "Before major training runs",
+          "Before significant deployments"
+        ]
+      },
+      {
+        "type": "cooperation",
+        "description": "Cooperation with governments and external researchers on safety",
+        "conditions": [
+          "High-risk scenarios",
+          "ASL-4 capabilities"
+        ]
+      }
+    ],
+    "metadata": {
+      "extraction_date": "2025-01-15",
+      "source": "Anthropic RSP v2.2 (October 2024)",
+      "confidence_score": 0.95
+    }
+  },
+  "openai": {
+    "lab_info": {
+      "name": "OpenAI",
+      "document_name": "Preparedness Framework",
+      "version": "2.0",
+      "publication_date": "April 2025",
+      "url": "https://cdn.openai.com/preparedness-framework-v2.pdf"
+    },
+    "capability_thresholds": [
+      {
+        "level_name": "Low",
+        "level_id": "low",
+        "description": "Model capabilities pose minimal risk, similar to widely available tools",
+        "triggers": [],
+        "required_safeguards": [
+          "Standard deployment practices"
+        ]
+      },
+      {
+        "level_name": "Medium",
+        "level_id": "medium",
+        "description": "Model provides modest uplift in risk areas but does not fundamentally change threat landscape",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Provides some useful information",
+            "threshold": "Modest uplift, comparable to skilled search"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Can assist with basic exploitation",
+            "threshold": "Helps but doesn't enable novel attacks"
+          }
+        ],
+        "required_safeguards": [
+          "Enhanced monitoring",
+          "Basic access restrictions"
+        ]
+      },
+      {
+        "level_name": "High",
+        "level_id": "high",
+        "description": "Model significantly increases risk in tracked categories, requiring substantial mitigations",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Significant CBRN uplift",
+            "threshold": "Meaningful increase in ability to create threats"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Advanced cyber capabilities",
+            "threshold": "Can discover or exploit significant vulnerabilities"
+          },
+          {
+            "domain": "persuasion",
+            "capability": "Sophisticated persuasion",
+            "threshold": "Can conduct targeted, effective persuasion campaigns"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Model autonomy",
+            "threshold": "Significant autonomous task completion"
+          }
+        ],
+        "required_safeguards": [
+          "Robust safety mitigations",
+          "Deployment restrictions",
+          "Enhanced security",
+          "Regular capability monitoring",
+          "Red team evaluations"
+        ]
+      },
+      {
+        "level_name": "Critical",
+        "level_id": "critical",
+        "description": "Model could contribute to existential-level risks or enable catastrophic misuse",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Weapons-grade assistance",
+            "threshold": "Could enable creation of novel threats"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Strategic cyber operations",
+            "threshold": "Nation-state level capabilities"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Full autonomy",
+            "threshold": "Can achieve complex goals independently"
+          }
+        ],
+        "required_safeguards": [
+          "Maximum restrictions",
+          "Potential development halt",
+          "Government notification",
+          "External oversight mandatory"
+        ]
+      }
+    ],
+    "risk_domains": [
+      {
+        "domain": "cbrn",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "Medium",
+            "description": "Modest uplift"
+          },
+          {
+            "level": "High",
+            "description": "Significant uplift"
+          },
+          {
+            "level": "Critical",
+            "description": "Weapons-grade"
+          }
+        ]
+      },
+      {
+        "domain": "cyber",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "Medium",
+            "description": "Basic exploitation"
+          },
+          {
+            "level": "High",
+            "description": "Advanced capabilities"
+          },
+          {
+            "level": "Critical",
+            "description": "Nation-state level"
+          }
+        ]
+      },
+      {
+        "domain": "persuasion",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "High",
+            "description": "Sophisticated campaigns"
+          },
+          {
+            "level": "Critical",
+            "description": "Mass manipulation capability"
+          }
+        ]
+      },
+      {
+        "domain": "autonomy",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "High",
+            "description": "Significant autonomous operation"
+          },
+          {
+            "level": "Critical",
+            "description": "Full autonomy"
+          }
+        ]
+      }
+    ],
+    "safeguards": [
+      {
+        "type": "technical",
+        "name": "Safety Mitigations",
+        "description": "Technical safeguards to prevent misuse",
+        "applicable_levels": [
+          "High",
+          "Critical"
+        ]
+      },
+      {
+        "type": "deployment",
+        "name": "Deployment Restrictions",
+        "description": "Limiting access based on risk level",
+        "applicable_levels": [
+          "High",
+          "Critical"
+        ]
+      },
+      {
+        "type": "security",
+        "name": "Model Security",
+        "description": "Protection of model weights and infrastructure",
+        "applicable_levels": [
+          "High",
+          "Critical"
+        ]
+      },
+      {
+        "type": "governance",
+        "name": "Board Oversight",
+        "description": "Board approval for high-risk deployments",
+        "applicable_levels": [
+          "Critical"
+        ]
+      }
+    ],
+    "evaluation_requirements": [
+      {
+        "name": "Capability Scorecard",
+        "type": "internal",
+        "frequency": "Each major model",
+        "description": "Systematic evaluation across risk domains"
+      },
+      {
+        "name": "Red Team Exercises",
+        "type": "red_team",
+        "frequency": "Pre-deployment",
+        "description": "Adversarial testing for misuse"
+      },
+      {
+        "name": "External Evaluation",
+        "type": "external",
+        "frequency": "Major releases",
+        "description": "Third-party capability assessment"
+      }
+    ],
+    "commitments": [
+      {
+        "type": "pause",
+        "description": "Will not deploy Critical-level models without board and safety team approval",
+        "conditions": [
+          "Critical threshold reached"
+        ]
+      },
+      {
+        "type": "disclosure",
+        "description": "Report significant capability discoveries to the board",
+        "conditions": [
+          "Unexpected capability jumps"
+        ]
+      },
+      {
+        "type": "assessment",
+        "description": "Evaluate all models against the preparedness scorecard",
+        "conditions": [
+          "Before training",
+          "Before deployment"
+        ]
+      }
+    ],
+    "metadata": {
+      "extraction_date": "2025-01-15",
+      "source": "OpenAI Preparedness Framework v2.0",
+      "confidence_score": 0.9
+    }
+  },
+  "deepmind": {
+    "lab_info": {
+      "name": "Google DeepMind",
+      "document_name": "Frontier Safety Framework",
+      "version": "3.0",
+      "publication_date": "October 2025",
+      "url": "https://deepmind.google/discover/blog/updating-the-frontier-safety-framework/"
+    },
+    "capability_thresholds": [
+      {
+        "level_name": "Below CCL",
+        "level_id": "below_ccl",
+        "description": "Capabilities below Critical Capability Levels - standard deployment",
+        "triggers": [],
+        "required_safeguards": [
+          "Standard practices"
+        ]
+      },
+      {
+        "level_name": "Approaching CCL",
+        "level_id": "approaching_ccl",
+        "description": "Early warning that models are approaching critical thresholds",
+        "triggers": [
+          {
+            "domain": "any",
+            "capability": "Early warning indicators",
+            "threshold": "50% of the way to CCL thresholds"
+          }
+        ],
+        "required_safeguards": [
+          "Enhanced monitoring",
+          "Increased evaluation frequency",
+          "Mitigation development begins"
+        ]
+      },
+      {
+        "level_name": "CCL-1",
+        "level_id": "ccl_1",
+        "description": "First Critical Capability Level - significant uplift in high-risk domains",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Biosecurity risk",
+            "threshold": "Significantly increases ability of non-experts to cause harm"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Cyber offense",
+            "threshold": "Can automate significant parts of sophisticated attacks"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "ML R&D automation",
+            "threshold": "Can substantially accelerate AI development"
+          },
+          {
+            "domain": "deception",
+            "capability": "Scheming",
+            "threshold": "Evidence of goal-directed deceptive behavior"
+          }
+        ],
+        "required_safeguards": [
+          "Deployment mitigations verified",
+          "Security level Alpha",
+          "Red team sign-off",
+          "Monitoring for capability jumps"
+        ]
+      },
+      {
+        "level_name": "CCL-2",
+        "level_id": "ccl_2",
+        "description": "Second Critical Capability Level - severe risks requiring maximum safeguards",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Weapons creation",
+            "threshold": "Could enable creation of novel biological or chemical weapons"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Critical infrastructure",
+            "threshold": "Can compromise critical infrastructure autonomously"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Self-improvement",
+            "threshold": "Can meaningfully improve its own capabilities"
+          }
+        ],
+        "required_safeguards": [
+          "Maximum security (Level Omega)",
+          "Deployment restrictions or hold",
+          "Government notification",
+          "External oversight"
+        ]
+      }
+    ],
+    "risk_domains": [
+      {
+        "domain": "cbrn",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "CCL-1",
+            "description": "Significant uplift for non-experts"
+          },
+          {
+            "level": "CCL-2",
+            "description": "Novel weapons creation"
+          }
+        ]
+      },
+      {
+        "domain": "cyber",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "CCL-1",
+            "description": "Automates sophisticated attacks"
+          },
+          {
+            "level": "CCL-2",
+            "description": "Critical infrastructure compromise"
+          }
+        ]
+      },
+      {
+        "domain": "autonomy",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "CCL-1",
+            "description": "ML R&D acceleration"
+          },
+          {
+            "level": "CCL-2",
+            "description": "Self-improvement"
+          }
+        ]
+      },
+      {
+        "domain": "deception",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "CCL-1",
+            "description": "Evidence of scheming behavior"
+          }
+        ]
+      }
+    ],
+    "safeguards": [
+      {
+        "type": "security",
+        "name": "Security Levels",
+        "description": "Tiered security from Alpha to Omega based on capability level",
+        "applicable_levels": [
+          "CCL-1",
+          "CCL-2"
+        ]
+      },
+      {
+        "type": "deployment",
+        "name": "Deployment Controls",
+        "description": "Risk-based deployment restrictions",
+        "applicable_levels": [
+          "CCL-1",
+          "CCL-2"
+        ]
+      },
+      {
+        "type": "technical",
+        "name": "Alignment Techniques",
+        "description": "Technical measures to ensure model follows intent",
+        "applicable_levels": [
+          "CCL-1",
+          "CCL-2"
+        ]
+      },
+      {
+        "type": "governance",
+        "name": "Responsibility Council",
+        "description": "Internal governance body for high-stakes decisions",
+        "applicable_levels": [
+          "CCL-1",
+          "CCL-2"
+        ]
+      }
+    ],
+    "evaluation_requirements": [
+      {
+        "name": "Capability Evaluations",
+        "type": "internal",
+        "frequency": "Continuous during training",
+        "description": "Monitor for CCL thresholds"
+      },
+      {
+        "name": "Early Warning System",
+        "type": "benchmark",
+        "frequency": "Ongoing",
+        "description": "Detect approaching CCL"
+      },
+      {
+        "name": "Red Team Assessment",
+        "type": "red_team",
+        "frequency": "Pre-deployment",
+        "description": "Adversarial capability testing"
+      },
+      {
+        "name": "External Audits",
+        "type": "audit",
+        "frequency": "Regular",
+        "description": "Third-party review of safety practices"
+      }
+    ],
+    "commitments": [
+      {
+        "type": "pause",
+        "description": "Will not deploy models exceeding CCL without verified mitigations",
+        "conditions": [
+          "CCL threshold exceeded",
+          "Mitigations not ready"
+        ]
+      },
+      {
+        "type": "disclosure",
+        "description": "Share safety-relevant findings with other labs",
+        "conditions": [
+          "Novel safety issues discovered"
+        ]
+      },
+      {
+        "type": "cooperation",
+        "description": "Work with governments on high-risk scenarios",
+        "conditions": [
+          "CCL-2 capabilities",
+          "National security implications"
+        ]
+      }
+    ],
+    "metadata": {
+      "extraction_date": "2025-01-15",
+      "source": "DeepMind Frontier Safety Framework v3.0",
+      "confidence_score": 0.9
+    }
+  },
+  "meta": {
+    "lab_info": {
+      "name": "Meta",
+      "document_name": "Frontier AI Framework",
+      "version": "1.0",
+      "publication_date": "2025",
+      "url": "https://ai.meta.com/blog/frontier-ai-framework/"
+    },
+    "capability_thresholds": [
+      {
+        "level_name": "Tier 1 - Low Risk",
+        "level_id": "tier_1",
+        "description": "Models with capabilities that pose minimal incremental risk",
+        "triggers": [],
+        "required_safeguards": [
+          "Standard deployment practices",
+          "Basic monitoring"
+        ]
+      },
+      {
+        "level_name": "Tier 2 - Moderate Risk",
+        "level_id": "tier_2",
+        "description": "Models with meaningful but manageable risk uplift",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Some CBRN knowledge",
+            "threshold": "Provides useful but not critical information"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Cyber assistance",
+            "threshold": "Helps with known vulnerabilities"
+          }
+        ],
+        "required_safeguards": [
+          "Enhanced safeguards",
+          "Usage monitoring",
+          "Access controls for sensitive capabilities"
+        ]
+      },
+      {
+        "level_name": "Tier 3 - High Risk",
+        "level_id": "tier_3",
+        "description": "Models with significant dangerous capabilities requiring robust mitigations",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "Significant CBRN uplift",
+            "threshold": "Materially increases risk of attacks"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Advanced offensive cyber",
+            "threshold": "Can conduct sophisticated autonomous attacks"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Autonomous operation",
+            "threshold": "Can achieve goals with minimal oversight"
+          }
+        ],
+        "required_safeguards": [
+          "Robust technical mitigations",
+          "Strict access controls",
+          "Enhanced security",
+          "External evaluation",
+          "Potential deployment restrictions"
+        ]
+      },
+      {
+        "level_name": "Tier 4 - Critical Risk",
+        "level_id": "tier_4",
+        "description": "Models posing catastrophic or existential-level risks",
+        "triggers": [
+          {
+            "domain": "cbrn",
+            "capability": "WMD creation",
+            "threshold": "Could enable creation of weapons of mass destruction"
+          },
+          {
+            "domain": "cyber",
+            "capability": "Critical infrastructure",
+            "threshold": "Could cause widespread infrastructure failure"
+          },
+          {
+            "domain": "autonomy",
+            "capability": "Uncontrollable autonomy",
+            "threshold": "Could resist human control"
+          }
+        ],
+        "required_safeguards": [
+          "Maximum security protocols",
+          "Development pause considered",
+          "Government engagement mandatory",
+          "International coordination"
+        ]
+      }
+    ],
+    "risk_domains": [
+      {
+        "domain": "cbrn",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "Tier 2",
+            "description": "Useful information"
+          },
+          {
+            "level": "Tier 3",
+            "description": "Material risk increase"
+          },
+          {
+            "level": "Tier 4",
+            "description": "WMD enablement"
+          }
+        ]
+      },
+      {
+        "domain": "cyber",
+        "coverage": "full",
+        "thresholds": [
+          {
+            "level": "Tier 2",
+            "description": "Known vulnerabilities"
+          },
+          {
+            "level": "Tier 3",
+            "description": "Sophisticated attacks"
+          },
+          {
+            "level": "Tier 4",
+            "description": "Critical infrastructure"
+          }
+        ]
+      },
+      {
+        "domain": "autonomy",
+        "coverage": "partial",
+        "thresholds": [
+          {
+            "level": "Tier 3",
+            "description": "Goal-directed autonomy"
+          },
+          {
+            "level": "Tier 4",
+            "description": "Resistance to control"
+          }
+        ]
+      }
+    ],
+    "safeguards": [
+      {
+        "type": "technical",
+        "name": "Model Mitigations",
+        "description": "Technical safeguards built into the model",
+        "applicable_levels": [
+          "Tier 2",
+          "Tier 3",
+          "Tier 4"
+        ]
+      },
+      {
+        "type": "deployment",
+        "name": "Access Controls",
+        "description": "Tiered access based on risk level",
+        "applicable_levels": [
+          "Tier 2",
+          "Tier 3"
+        ]
+      },
+      {
+        "type": "security",
+        "name": "Weight Security",
+        "description": "Protection of model weights",
+        "applicable_levels": [
+          "Tier 3",
+          "Tier 4"
+        ]
+      },
+      {
+        "type": "governance",
+        "name": "External Review",
+        "description": "Third-party evaluation of high-risk models",
+        "applicable_levels": [
+          "Tier 3",
+          "Tier 4"
+        ]
+      }
+    ],
+    "evaluation_requirements": [
+      {
+        "name": "Risk Assessment",
+        "type": "internal",
+        "frequency": "Pre-release",
+        "description": "Evaluate model against risk tiers"
+      },
+      {
+        "name": "Red Teaming",
+        "type": "red_team",
+        "frequency": "Major releases",
+        "description": "Adversarial testing"
+      },
+      {
+        "name": "External Evaluation",
+        "type": "external",
+        "frequency": "High-risk models",
+        "description": "Third-party assessment"
+      }
+    ],
+    "commitments": [
+      {
+        "type": "pause",
+        "description": "Will pause development if Tier 4 risks emerge without adequate mitigations",
+        "conditions": [
+          "Tier 4 threshold reached"
+        ]
+      },
+      {
+        "type": "disclosure",
+        "description": "Share significant safety findings with the research community",
+        "conditions": [
+          "Novel risks discovered"
+        ]
+      },
+      {
+        "type": "cooperation",
+        "description": "Engage with policymakers on frontier AI governance",
+        "conditions": [
+          "High-risk scenarios"
+        ]
+      }
+    ],
+    "metadata": {
+      "extraction_date": "2025-01-15",
+      "source": "Meta Frontier AI Framework",
+      "confidence_score": 0.85
+    }
+  }
+}

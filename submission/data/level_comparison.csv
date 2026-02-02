@@ -1,0 +1,6 @@
+Unified Level,Description,Anthropic,Openai,Deepmind,Meta
+Minimal,Systems posing no meaningful incremental risk beyond widely ...,ASL-1 ✓,Low ~,-,Tier 1 - Low Risk ~
+Emerging,"Early signs of dangerous capabilities, but no significant up...",ASL-2 ✓,Medium ~,Below CCL ~,Tier 2 - Moderate Risk ~
+Significant,"Substantially increases risk of catastrophic misuse, require...",ASL-3 ✓,High ✓,CCL-1 ✓,Tier 3 - High Risk ✓
+Severe,High-risk capabilities requiring maximum safeguards and pote...,ASL-4 ✓,-,CCL-2 ✓,-
+Critical,"Capabilities that could contribute to existential risks, may...",-,Critical ✓,-,Tier 4 - Critical Risk ✓

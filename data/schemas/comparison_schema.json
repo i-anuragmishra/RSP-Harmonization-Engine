@@ -1,0 +1,200 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://rsp-harmonization.dev/schemas/comparison_schema.json",
+  "title": "RSP Comparison Schema",
+  "description": "Schema for gap analysis and comparison outputs",
+  "type": "object",
+  "definitions": {
+    "gap": {
+      "type": "object",
+      "required": [
+        "gap_id",
+        "type",
+        "severity",
+        "title"
+      ],
+      "properties": {
+        "gap_id": {
+          "type": "string",
+          "description": "Unique identifier (e.g., 'THR-AUT-001')",
+          "pattern": "^(THR|COV|DEF|TERM)-[A-Z]{2,4}-[0-9]{3}$"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "threshold",
+            "coverage",
+            "definition",
+            "terminology"
+          ],
+          "description": "Type of gap"
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ],
+          "description": "Severity of the gap"
+        },
+        "title": {
+          "type": "string",
+          "description": "Brief title describing the gap"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the gap"
+        },
+        "affected_labs": {
+          "type": "array",
+          "description": "Labs affected by this gap",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domain": {
+          "type": "string",
+          "description": "Risk domain this gap relates to"
+        },
+        "examples": {
+          "type": "array",
+          "description": "Specific examples illustrating the gap",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lab": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              },
+              "interpretation": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "recommendation": {
+          "type": "string",
+          "description": "Suggested resolution for this gap"
+        }
+      }
+    },
+    "level_mapping": {
+      "type": "object",
+      "description": "Mapping of equivalent risk levels across frameworks",
+      "properties": {
+        "unified_level": {
+          "type": "string",
+          "description": "Standardized level name"
+        },
+        "unified_level_id": {
+          "type": "integer",
+          "description": "Numeric identifier for ordering"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of this unified level"
+        },
+        "lab_mappings": {
+          "type": "object",
+          "description": "How each lab's level maps to this unified level",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "level_name": {
+                "type": "string"
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "exact",
+                  "approximate",
+                  "uncertain",
+                  "none"
+                ]
+              },
+              "notes": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "analysis_metadata": {
+      "type": "object",
+      "properties": {
+        "analysis_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "labs_analyzed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "total_gaps": {
+          "type": "integer"
+        },
+        "high_severity_count": {
+          "type": "integer"
+        }
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "description": "List of identified gaps",
+      "items": {
+        "$ref": "#/definitions/gap"
+      }
+    },
+    "level_mappings": {
+      "type": "array",
+      "description": "Unified level mappings across frameworks",
+      "items": {
+        "$ref": "#/definitions/level_mapping"
+      }
+    },
+    "domain_coverage_matrix": {
+      "type": "object",
+      "description": "Coverage of each domain by each lab",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "enum": [
+            "full",
+            "partial",
+            "none"
+          ]
+        }
+      }
+    },
+    "terminology_conflicts": {
+      "type": "array",
+      "description": "Terms with conflicting definitions",
+      "items": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "definitions": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "recommendation": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

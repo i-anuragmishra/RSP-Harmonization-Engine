@@ -1,0 +1,167 @@
+{
+  "unified_levels": [
+    {
+      "level": "MINIMAL",
+      "value": 1,
+      "description": "Systems posing no meaningful incremental risk beyond widely available tools"
+    },
+    {
+      "level": "EMERGING",
+      "value": 2,
+      "description": "Early signs of dangerous capabilities, but no significant uplift beyond existing resources"
+    },
+    {
+      "level": "SIGNIFICANT",
+      "value": 3,
+      "description": "Substantially increases risk of catastrophic misuse, requires robust mitigations"
+    },
+    {
+      "level": "SEVERE",
+      "value": 4,
+      "description": "High-risk capabilities requiring maximum safeguards and potential deployment restrictions"
+    },
+    {
+      "level": "CRITICAL",
+      "value": 5,
+      "description": "Capabilities that could contribute to existential risks, may require development pause"
+    }
+  ],
+  "lab_mappings": {
+    "anthropic": [
+      {
+        "lab_level_name": "ASL-1",
+        "lab_level_id": "asl_1",
+        "unified_level": "MINIMAL",
+        "unified_level_value": 1,
+        "confidence": "exact",
+        "notes": "No meaningful catastrophic risk"
+      },
+      {
+        "lab_level_name": "ASL-2",
+        "lab_level_id": "asl_2",
+        "unified_level": "EMERGING",
+        "unified_level_value": 2,
+        "confidence": "exact",
+        "notes": "Current systems, early signs of capabilities"
+      },
+      {
+        "lab_level_name": "ASL-3",
+        "lab_level_id": "asl_3",
+        "unified_level": "SIGNIFICANT",
+        "unified_level_value": 3,
+        "confidence": "exact",
+        "notes": "Substantial increase in catastrophic misuse risk"
+      },
+      {
+        "lab_level_name": "ASL-4",
+        "lab_level_id": "asl_4",
+        "unified_level": "SEVERE",
+        "unified_level_value": 4,
+        "confidence": "exact",
+        "notes": "Could accelerate state-level threats"
+      }
+    ],
+    "openai": [
+      {
+        "lab_level_name": "Low",
+        "lab_level_id": "low",
+        "unified_level": "MINIMAL",
+        "unified_level_value": 1,
+        "confidence": "approximate",
+        "notes": "Minimal risk, similar to widely available tools"
+      },
+      {
+        "lab_level_name": "Medium",
+        "lab_level_id": "medium",
+        "unified_level": "EMERGING",
+        "unified_level_value": 2,
+        "confidence": "approximate",
+        "notes": "Modest uplift, doesn't fundamentally change threat landscape"
+      },
+      {
+        "lab_level_name": "High",
+        "lab_level_id": "high",
+        "unified_level": "SIGNIFICANT",
+        "unified_level_value": 3,
+        "confidence": "exact",
+        "notes": "Significantly increases risk in tracked categories"
+      },
+      {
+        "lab_level_name": "Critical",
+        "lab_level_id": "critical",
+        "unified_level": "CRITICAL",
+        "unified_level_value": 5,
+        "confidence": "exact",
+        "notes": "Could contribute to existential-level risks"
+      }
+    ],
+    "deepmind": [
+      {
+        "lab_level_name": "Below CCL",
+        "lab_level_id": "below_ccl",
+        "unified_level": "EMERGING",
+        "unified_level_value": 2,
+        "confidence": "approximate",
+        "notes": "Below Critical Capability Levels"
+      },
+      {
+        "lab_level_name": "Approaching CCL",
+        "lab_level_id": "approaching_ccl",
+        "unified_level": "EMERGING",
+        "unified_level_value": 2,
+        "confidence": "approximate",
+        "notes": "Early warning, 50% of CCL thresholds"
+      },
+      {
+        "lab_level_name": "CCL-1",
+        "lab_level_id": "ccl_1",
+        "unified_level": "SIGNIFICANT",
+        "unified_level_value": 3,
+        "confidence": "exact",
+        "notes": "First Critical Capability Level"
+      },
+      {
+        "lab_level_name": "CCL-2",
+        "lab_level_id": "ccl_2",
+        "unified_level": "SEVERE",
+        "unified_level_value": 4,
+        "confidence": "exact",
+        "notes": "Second Critical Capability Level, severe risks"
+      }
+    ],
+    "meta": [
+      {
+        "lab_level_name": "Tier 1 - Low Risk",
+        "lab_level_id": "tier_1",
+        "unified_level": "MINIMAL",
+        "unified_level_value": 1,
+        "confidence": "approximate",
+        "notes": "Minimal incremental risk"
+      },
+      {
+        "lab_level_name": "Tier 2 - Moderate Risk",
+        "lab_level_id": "tier_2",
+        "unified_level": "EMERGING",
+        "unified_level_value": 2,
+        "confidence": "approximate",
+        "notes": "Meaningful but manageable risk uplift"
+      },
+      {
+        "lab_level_name": "Tier 3 - High Risk",
+        "lab_level_id": "tier_3",
+        "unified_level": "SIGNIFICANT",
+        "unified_level_value": 3,
+        "confidence": "exact",
+        "notes": "Significant dangerous capabilities"
+      },
+      {
+        "lab_level_name": "Tier 4 - Critical Risk",
+        "lab_level_id": "tier_4",
+        "unified_level": "CRITICAL",
+        "unified_level_value": 5,
+        "confidence": "exact",
+        "notes": "Catastrophic or existential-level risks"
+      }
+    ]
+  }
+}

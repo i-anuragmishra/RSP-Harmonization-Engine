@@ -1,0 +1,336 @@
+{
+  "analysis_metadata": {
+    "total_gaps": 11,
+    "high_severity_count": 5,
+    "medium_severity_count": 5,
+    "low_severity_count": 1,
+    "labs_analyzed": [
+      "anthropic",
+      "openai",
+      "deepmind",
+      "meta"
+    ]
+  },
+  "gaps": [
+    {
+      "gap_id": "THR-AUT-001",
+      "type": "threshold",
+      "severity": "high",
+      "title": "Autonomy Threshold Misalignment",
+      "description": "Labs define 'dangerous autonomy' differently. Anthropic focuses on self-replication and resource acquisition, while OpenAI emphasizes general autonomous task completion, and DeepMind tracks ML R&D automation specifically.",
+      "affected_labs": [
+        "anthropic",
+        "openai",
+        "deepmind",
+        "meta"
+      ],
+      "domain": "autonomy",
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "Cannot meaningfully self-replicate or acquire resources",
+          "interpretation": "Focuses on self-preservation behaviors"
+        },
+        {
+          "lab": "openai",
+          "quote": "Significant autonomous task completion",
+          "interpretation": "Broader definition of autonomy"
+        },
+        {
+          "lab": "deepmind",
+          "quote": "Can substantially accelerate AI development",
+          "interpretation": "Specific to AI R&D autonomy"
+        }
+      ],
+      "recommendation": "Define standardized autonomy metrics: (1) Self-replication capability, (2) Resource acquisition, (3) Task completion without oversight, (4) AI R&D acceleration"
+    },
+    {
+      "gap_id": "THR-RND-001",
+      "type": "threshold",
+      "severity": "high",
+      "title": "AI R&D Acceleration Threshold Divergence",
+      "description": "Different labs have vastly different thresholds for when AI-assisted R&D becomes concerning. Some treat any meaningful acceleration as high-risk, others focus only on autonomous research.",
+      "affected_labs": [
+        "anthropic",
+        "deepmind"
+      ],
+      "domain": "ai_rd",
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "Can meaningfully accelerate AI development (ASL-3)",
+          "interpretation": "Broad acceleration concern"
+        },
+        {
+          "lab": "deepmind",
+          "quote": "Can substantially accelerate AI development (CCL-1)",
+          "interpretation": "Similar but different threshold terminology"
+        }
+      ],
+      "recommendation": "Establish quantitative metrics for AI R&D acceleration (e.g., X% reduction in development time, capability to discover novel architectures)"
+    },
+    {
+      "gap_id": "THR-CBR-001",
+      "type": "threshold",
+      "severity": "high",
+      "title": "CBRN Uplift Definition Inconsistency",
+      "description": "'Meaningful uplift' for CBRN capabilities is defined differently. Some labs compare to 'web search baseline', others to 'non-expert baseline', with unclear equivalence.",
+      "affected_labs": [
+        "anthropic",
+        "openai",
+        "deepmind",
+        "meta"
+      ],
+      "domain": "cbrn",
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "No meaningful uplift beyond web search",
+          "interpretation": "Web search as baseline"
+        },
+        {
+          "lab": "openai",
+          "quote": "Modest uplift, comparable to skilled search",
+          "interpretation": "Skilled search as baseline"
+        },
+        {
+          "lab": "deepmind",
+          "quote": "Significantly increases ability of non-experts to cause harm",
+          "interpretation": "Non-expert baseline"
+        }
+      ],
+      "recommendation": "Define standardized CBRN uplift metrics with specific baseline comparisons and quantitative uplift thresholds"
+    },
+    {
+      "gap_id": "TERM-001",
+      "type": "terminology",
+      "severity": "high",
+      "title": "Risk Level Naming Inconsistency",
+      "description": "Labs use completely different naming conventions for risk levels, making cross-framework comparison difficult for regulators and researchers.",
+      "affected_labs": [
+        "anthropic",
+        "openai",
+        "deepmind",
+        "meta"
+      ],
+      "domain": null,
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "ASL-1 through ASL-4",
+          "interpretation": "AI Safety Levels"
+        },
+        {
+          "lab": "openai",
+          "quote": "Low, Medium, High, Critical",
+          "interpretation": "Risk-based naming"
+        },
+        {
+          "lab": "deepmind",
+          "quote": "Below CCL, CCL-1, CCL-2",
+          "interpretation": "Critical Capability Levels"
+        },
+        {
+          "lab": "meta",
+          "quote": "Tier 1 through Tier 4",
+          "interpretation": "Tiered system"
+        }
+      ],
+      "recommendation": "Adopt a unified 5-tier framework: Minimal, Emerging, Significant, Severe, Critical"
+    },
+    {
+      "gap_id": "COV-PER-001",
+      "type": "coverage",
+      "severity": "medium",
+      "title": "Persuasion/Manipulation Coverage Gap",
+      "description": "Not all frameworks explicitly address AI persuasion and manipulation capabilities with the same rigor as other domains.",
+      "affected_labs": [
+        "anthropic",
+        "meta"
+      ],
+      "domain": "persuasion",
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "Partial coverage of persuasion",
+          "interpretation": "Not as detailed as CBRN/cyber"
+        },
+        {
+          "lab": "openai",
+          "quote": "Sophisticated persuasion campaigns (High level)",
+          "interpretation": "Explicit coverage"
+        }
+      ],
+      "recommendation": "All frameworks should include explicit persuasion thresholds with metrics for influence operations"
+    },
+    {
+      "gap_id": "COV-DEC-001",
+      "type": "coverage",
+      "severity": "medium",
+      "title": "Deception/Scheming Coverage Variance",
+      "description": "Only some frameworks explicitly address AI deception and scheming behaviors as a distinct risk category.",
+      "affected_labs": [
+        "anthropic",
+        "openai",
+        "meta"
+      ],
+      "domain": "deception",
+      "examples": [
+        {
+          "lab": "deepmind",
+          "quote": "Evidence of goal-directed deceptive behavior (CCL-1)",
+          "interpretation": "Explicit scheming threshold"
+        },
+        {
+          "lab": "anthropic",
+          "quote": "No explicit deception category",
+          "interpretation": "Covered implicitly under autonomy"
+        }
+      ],
+      "recommendation": "Add explicit deception/scheming thresholds to all frameworks"
+    },
+    {
+      "gap_id": "DEF-SEC-001",
+      "type": "definition",
+      "severity": "medium",
+      "title": "Security Level Definition Variance",
+      "description": "Security requirements at equivalent risk levels vary significantly. 'Enhanced security' means different things across frameworks.",
+      "affected_labs": [
+        "anthropic",
+        "openai",
+        "deepmind",
+        "meta"
+      ],
+      "domain": null,
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "Hardened infrastructure (ASL-3)",
+          "interpretation": "Focus on infrastructure"
+        },
+        {
+          "lab": "deepmind",
+          "quote": "Security Level Alpha to Omega",
+          "interpretation": "Explicit tiered security system"
+        },
+        {
+          "lab": "meta",
+          "quote": "Weight security (Tier 3+)",
+          "interpretation": "Focus on model weights"
+        }
+      ],
+      "recommendation": "Define standardized security levels with specific technical requirements"
+    },
+    {
+      "gap_id": "THR-CYB-001",
+      "type": "threshold",
+      "severity": "medium",
+      "title": "Cyber Capability Threshold Ambiguity",
+      "description": "Thresholds for dangerous cyber capabilities vary in specificity and measurability.",
+      "affected_labs": [
+        "anthropic",
+        "openai",
+        "deepmind",
+        "meta"
+      ],
+      "domain": "cyber",
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "Can discover and exploit novel vulnerabilities (ASL-3)",
+          "interpretation": "Novel vulnerability focus"
+        },
+        {
+          "lab": "openai",
+          "quote": "Can discover or exploit significant vulnerabilities (High)",
+          "interpretation": "Significant vs novel"
+        },
+        {
+          "lab": "deepmind",
+          "quote": "Can automate significant parts of sophisticated attacks (CCL-1)",
+          "interpretation": "Automation focus"
+        }
+      ],
+      "recommendation": "Define specific cyber capability benchmarks with measurable criteria"
+    },
+    {
+      "gap_id": "DEF-PAU-001",
+      "type": "definition",
+      "severity": "high",
+      "title": "Pause Commitment Ambiguity",
+      "description": "While all labs commit to pausing under extreme circumstances, the specific conditions and duration are often vague.",
+      "affected_labs": [
+        "anthropic",
+        "openai",
+        "deepmind",
+        "meta"
+      ],
+      "domain": null,
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "Will not train/deploy without safeguards in place",
+          "interpretation": "Safeguard-gated"
+        },
+        {
+          "lab": "openai",
+          "quote": "Will not deploy Critical models without approval",
+          "interpretation": "Approval-gated"
+        },
+        {
+          "lab": "deepmind",
+          "quote": "Will not deploy models exceeding CCL without mitigations",
+          "interpretation": "Mitigation-gated"
+        }
+      ],
+      "recommendation": "Define clear, verifiable pause conditions with specific capability thresholds and safeguard requirements"
+    },
+    {
+      "gap_id": "TERM-002",
+      "type": "terminology",
+      "severity": "low",
+      "title": "Safeguard vs Mitigation Terminology",
+      "description": "Labs use 'safeguards', 'mitigations', and 'controls' somewhat interchangeably.",
+      "affected_labs": [
+        "anthropic",
+        "openai",
+        "deepmind",
+        "meta"
+      ],
+      "domain": null,
+      "examples": [
+        {
+          "lab": "anthropic",
+          "quote": "Required safeguards",
+          "interpretation": "Uses 'safeguards'"
+        },
+        {
+          "lab": "deepmind",
+          "quote": "Deployment mitigations verified",
+          "interpretation": "Uses 'mitigations'"
+        },
+        {
+          "lab": "openai",
+          "quote": "Safety mitigations",
+          "interpretation": "Uses 'mitigations'"
+        }
+      ],
+      "recommendation": "Standardize terminology: 'Safeguards' for proactive measures, 'Mitigations' for risk reduction"
+    },
+    {
+      "gap_id": "COV-AI_-DYN",
+      "type": "coverage",
+      "severity": "medium",
+      "title": "Ai_Rd Coverage Gap",
+      "description": "Not all frameworks address ai_rd with equal rigor.",
+      "affected_labs": [
+        "openai",
+        "deepmind",
+        "meta"
+      ],
+      "domain": "ai_rd",
+      "examples": [],
+      "recommendation": "Ensure all frameworks explicitly address ai_rd risk domain"
+    }
+  ]
+}
