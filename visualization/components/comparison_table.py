@@ -23,23 +23,8 @@ def render_comparison_table(matrix_builder, selected_labs: Optional[list] = None
                 cols_to_keep.append(lab_title)
         df = df[cols_to_keep]
     
-    # Style function for confidence indicators
-    def style_confidence(val):
-        if "✓" in str(val):
-            return "background-color: #90EE90; font-weight: bold"  # Green for exact
-        elif "~" in str(val):
-            return "background-color: #FFE4B5"  # Orange for approximate
-        elif "?" in str(val):
-            return "background-color: #FFB6C1"  # Pink for uncertain
-        elif val == "-":
-            return "color: #888"
-        return ""
-    
-    # Apply styling to data columns (not Unified Level or Description)
-    data_cols = [c for c in df.columns if c not in ["Unified Level", "Description"]]
-    styled_df = df.style.applymap(style_confidence, subset=data_cols)
-    
-    st.dataframe(styled_df, use_container_width=True, height=300)
+    # Display the dataframe without styling (to avoid jinja2 version issues)
+    st.dataframe(df, use_container_width=True, height=300)
     
     # Legend
     st.markdown("""

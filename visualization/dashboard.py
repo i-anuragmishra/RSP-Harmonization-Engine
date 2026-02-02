@@ -160,18 +160,8 @@ def main():
         cols_to_show = ["Domain"] + [lab.title() for lab in selected_labs if lab.title() in df.columns]
         df_filtered = df[cols_to_show]
         
-        # Style the dataframe
-        def color_coverage(val):
-            if val == "●":
-                return "background-color: #90EE90"  # Light green
-            elif val == "◐":
-                return "background-color: #FFE4B5"  # Light orange
-            elif val == "○":
-                return "background-color: #FFB6C1"  # Light red
-            return ""
-        
-        styled_df = df_filtered.style.applymap(color_coverage, subset=[c for c in df_filtered.columns if c != "Domain"])
-        st.dataframe(styled_df, use_container_width=True, height=400)
+        # Display dataframe without styling (to avoid jinja2 version issues)
+        st.dataframe(df_filtered, use_container_width=True, height=400)
         
         st.markdown("**Legend:** ● Full coverage | ◐ Partial coverage | ○ No coverage")
         
